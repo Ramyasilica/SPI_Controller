@@ -22,14 +22,6 @@ SPI is commonly used in:
 * Memory devices
 * FPGA-based communication designs
 
-
-## Project Overview
-Got it 👍
-Here is the **updated “Project Overview” section only**, clearly stating that the design uses **one SPI master and one SPI slave**, and **why**.
-You can directly replace the *Project Overview* part in your README with this.
-
----
-
 ## Project Overview
 
 This repository presents a **SPI Controller RTL implementation** consisting of **one SPI Master and one SPI Slave**.
