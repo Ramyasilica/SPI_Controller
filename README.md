@@ -112,6 +112,11 @@ From the simulation waveform:
 * Verified using behavioral simulation
 * Beginner-friendly RTL design
 
+# Output waveform
+![image alt](https://github.com/Ramyasilica/SPI_Controller/blob/061af8a64741304c6630ad78b428efd7bd2aefab/SPI_Controller.jpg)
+
+
+
 
 ## 🧾 Conclusion
 
