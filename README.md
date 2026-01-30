@@ -113,7 +113,7 @@ From the simulation waveform:
 * Beginner-friendly RTL design
 
 # Output waveform
-![image alt](https://github.com/Ramyasilica/SPI_Controller/blob/061af8a64741304c6630ad78b428efd7bd2aefab/SPI_Controller.jpg)
+![image alt](https://github.com/Ramyasilica/SPI_Controller/blob/cd04a91cc49eaadc7dc8367bdc4d24c52f64fa9f/SPI_Controller.jpg)
 
 
 
