@@ -41,9 +41,7 @@ module spi_master (
     reg busy;
     reg sclk_prev;
 
-    // ======================================================
     // SPI Master Logic
-    // ======================================================
     always @(posedge clk) begin
         if (reset) begin
             cs   <= 1;
@@ -61,7 +59,7 @@ module spi_master (
             sclk_prev <= sclk;
             done <= 0;
 
-            // -------- START Transfer --------
+            //START
             if (start && !busy) begin
                 busy <= 1;
                 cs <= 0;
@@ -72,9 +70,9 @@ module spi_master (
                 mosi <= m_tx_data[7];
             end
 
-            // -------- During Transfer --------
+            // During Transfer
             if (busy) begin
-                sclk <= ~sclk;   // toggle every clock → 20ns period
+                sclk <= ~sclk;   
 
                 // Rising edge → sample MISO
                 if (sclk_prev == 0 && sclk == 1)
@@ -88,7 +86,7 @@ module spi_master (
                     end
                 end
 
-                // -------- END Transfer --------
+                // END
                 if (bit_idx == 0 && sclk_prev == 0 && sclk == 1) begin
                     busy <= 0;
                     cs <= 1;
@@ -103,15 +101,10 @@ module spi_master (
 endmodule
 
 
-// ====================================================================
-//                       FAST SPI SLAVE (MODE 0)
-//   Fully synchronous, works at 20ns SCLK without timing issues
-// ====================================================================
-`timescale 1ns/1ps
 
-// ====================================================================
-//                       FAST SPI SLAVE (MODE 0) - CORRECTED
-// ====================================================================
+
+`timescale 1ns/1ps
+//SPI SLAVE 
 module spi_slave (
     input  wire       clk,
     input  wire       reset,
@@ -141,8 +134,6 @@ module spi_slave (
         end else begin
             sclk_prev_s <= sclk;
             cs_prev <= cs;
-
-            // -------- CS falling → LOAD DATA --------
             if (cs_prev == 1 && cs == 0) begin
                 bit_idx_s  <= 7;
                 shift_tx_s <= s_tx_data;
@@ -171,7 +162,7 @@ module spi_slave (
                 if (cs_prev == 0 && cs == 1) begin
                     s_rx_data <= shift_rx_s;
                 end
-                miso <= 0; // tri-state simplified
+                miso <= 0; 
             end
         end
     end
