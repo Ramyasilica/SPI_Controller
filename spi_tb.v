@@ -19,8 +19,6 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 module spi_tb;
-
-
     reg clk = 0;
     reg reset = 1;
     reg start = 0;
@@ -31,8 +29,6 @@ module spi_tb;
 
     wire [7:0] m_rx_data;
     wire [7:0] s_rx_data;
-
-    // System clock = 10 ns (100 MHz)
     always #5 clk = ~clk;
 
     // Instantiate Master
@@ -52,18 +48,13 @@ module spi_tb;
     );
 
     initial begin
-        // RESET phase
         #20 reset = 0;
-
-        // Start transfer @ 30ns
         #10 start = 1;
         #10 start = 0;
-
-        // Simulation ends at 400ns
         #400 $finish;
     end
 
-    // -------- Monitor signals --------
+    // Monitor signals
     initial begin
         $display("Time(ns) | CS | SCLK | MOSI | MISO | M_RX | S_RX | DONE");
         $monitor("%8t |  %b  |  %b  |  %b  |  %b  | %2h  | %2h  |  %b",
